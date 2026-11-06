@@ -7,10 +7,10 @@ import requests
 
 def search_books(query):
     #Search open library and return as list of books
+    url = f"https://openlibrary.org/search.json?q={query}&limit=10"
+    response = requests.get(url)
+    print(response.status_code)
     return []
-
-
-
 
 
 
