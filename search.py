@@ -11,8 +11,21 @@ def search_books(query):
     response = requests.get(url)
     #print(response.status_code)# temporary check. 
     data = response.json()
-    print(len(data.get("docs", [])))
-    return []
+
+    # print(len(data.get("docs", [])))
+    # return []
+
+    books = []
+    for doc in data.get("docs",[]):
+        books.append({
+            "title": doc.get("title", "No Title"),
+            "author": ", ".join(doc.get("author_name", ["Unkown"])),
+            "year": doc.get("first_publish_year", "N/A"),
+            "cover_id": doc.get("cover_i"),
+
+        })
+
+    return books
 
 
 
