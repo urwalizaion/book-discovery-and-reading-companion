@@ -70,4 +70,9 @@ def search_books(query):
 
 
 if __name__ == "__main__":
-    print(search_books("flrresdf"))
+   # print(search_books("flrresdf"))
+   for test in ["friend","flrissds", " "]:
+       try:
+           print(test, "-->", len(search_books(test)), "books")
+       except BookSearchError as err:
+           print(repr(test), "-->", err)
