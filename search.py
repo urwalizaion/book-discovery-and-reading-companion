@@ -18,6 +18,9 @@ class BookNotFound(BookSearchError):
 
 def search_books(query):
     #Search open library and return as list of books
+
+    query = query.strip() #strip whatever input (learn more about strip later)
+    
     url = f"https://openlibrary.org/search.json?q={query}&limit=10"
     response = requests.get(url)
     #print(response.status_code)# temporary check. 
