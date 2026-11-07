@@ -21,10 +21,31 @@ def search_books(query):
 
     query = query.strip() #strip whatever input (learn more about strip later)
     
-    url = f"https://openlibrary.org/search.json?q={query}&limit=10"
-    response = requests.get(url)
+    #url = f"https://openlibrary.org/search.json?q={query}&limit=10"
+    #response = requests.get(url)
     #print(response.status_code)# temporary check. 
-    data = response.json()
+
+    if not query:
+        raise BookSearchError("Please enter a title, author or ISBN")
+
+
+    try:
+        response = requests.get(
+            "https://openlibrary.org/search.json",
+            params={"q": query, "limit": 10},
+            timeout=10,
+        )
+
+        response.raise_for_status()
+        data = response.json()
+
+
+    except requests.exceptions.Timeout:
+        raise BookSearchError("Your seach took too long, please try again. ")
+    except requests.exceptions.ConnectionError:
+        raise BookSearchError("couldn't connect, please check that you have an internet connection")
+    except (requests.exceptions.RequestException, ValueError):
+        raise BookSearchError("Open Library gave an unexpected reply, try again later")
 
     # print(len(data.get("docs", [])))
     # return []
