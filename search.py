@@ -47,11 +47,16 @@ def search_books(query):
     except (requests.exceptions.RequestException, ValueError):
         raise BookSearchError("Open Library gave an unexpected reply, try again later")
 
+
+    docs = data.get("docs", [])
+    if not docs:
+        raise BookNotFound (f"There we no books found for '{query}'. ")
     # print(len(data.get("docs", [])))
     # return []
 
     books = []
-    for doc in data.get("docs",[]):
+    #for doc in data.get("docs",[]):
+    for doc in docs:
         books.append({
             "title": doc.get("title", "No Title"),
             "author": ", ".join(doc.get("author_name", ["Unkown"])),
