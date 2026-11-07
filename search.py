@@ -5,6 +5,17 @@ the app needs (title, authors, year, subjects, pages and cover).
 """
 import requests
 
+#add exceptionb classes. later to be raised when a seach for some reacson cant be completed and presumably when a book cant be found. 
+
+
+class BookSearchError(Exception):
+    """this is raised when a search cant be commpleted"""
+
+class BookNotFound(BookSearchError): 
+    """raised whrn a book search returns no books"""
+
+
+
 def search_books(query):
     #Search open library and return as list of books
     url = f"https://openlibrary.org/search.json?q={query}&limit=10"
