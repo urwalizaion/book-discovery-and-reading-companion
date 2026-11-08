@@ -1,3 +1,0 @@
-remeber to inform urwa to import from search. 
-
-also When you’re ready to use search_books, wrap the call in try/except BookSearchError and show the message with st.warning
