@@ -171,7 +171,7 @@ class OpenLibraryClient:
  
         docs = data.get("docs", [])
         if not docs:
-            raise BookNotFound(f"There were no books found for '{query}'.")
+            raise BookNotFound(f"No books found for '{query}'.")
         # turn every raw result into the dictionary the app uses
         return [self._to_book(doc) for doc in docs]
  
