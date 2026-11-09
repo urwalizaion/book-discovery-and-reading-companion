@@ -1,4 +1,4 @@
-# 📚 Book Discovery Companion
+# 📚 Book Discovery And Reading Companion
 
 A Python Streamlit app that helps you discover books via Open Library + AI summaries via Gemini.
 
