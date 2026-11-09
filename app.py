@@ -24,7 +24,7 @@ st.set_page_config(page_title="Book Discovery Companion", page_icon="📚")
 api_key = st.secrets.get("GEMINI_API_KEY") if "GEMINI_API_KEY" in st.secrets else os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key) if api_key else None
 
-st.title("📚 Book Discovery Companion")
+st.title("📚 Book Discovery and reading Companion")
 
 reading_data = load_list()
 
